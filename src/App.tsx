@@ -15,7 +15,16 @@ import { message } from "antd";
 // To fix the cart
 
 const App = () => {
+  axios.get("/user/status")
+  .then(res => {
+    dispatch(initialize({ auth: res.data.auth, user: res.data.user }))
+  })
+  .catch(err => {
+    if (err.response.status === 403) {
+      localStorage.removeItem("jwt-token")
 
+    }
+  })
   const authStatus = useAppState(state => state.user.auth)
   // const userCart = useAppState(state => state.user.user?.cart)
   const cart = useAppState(state => state.cart.cart)
@@ -33,16 +42,7 @@ const App = () => {
 
 
     // console.log("hello");
-    axios.get("/user/status")
-      .then(res => {
-        dispatch(initialize({ auth: res.data.auth, user: res.data.user }))
-      })
-      .catch(err => {
-        if (err.response.status === 403) {
-          localStorage.removeItem("jwt-token")
-
-        }
-      })
+    
 
     if (authStatus) {
       axios.post("/user/cartreplace", { cart: cart })

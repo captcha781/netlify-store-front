@@ -16,15 +16,18 @@ const Orders = () => {
   document.title = "KeyStone | Orders"
 
   useEffect(() => {
-    axios.get("/user/orders")
+    setTimeout(() => {
+      
+      axios.get("/user/orders")
       .then(response => {
         dispatch(setupOrders(response.data.orders))
         console.log(response);
-
+        
       })
       .catch(err => {
         message.error(err.message)
       })
+    }, 200);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
