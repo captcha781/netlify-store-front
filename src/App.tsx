@@ -24,13 +24,13 @@ const App = () => {
   // const navigate = useNavigate()
   useEffect(() => {
     let token = localStorage.getItem("jwt-token")
-    if(token){
+    if (token) {
       axios.defaults.headers.common['jwt-token'] = token
     }
     let tempcart = localStorage.getItem("cart")
-    
-      dispatch(initializeCart(JSON.parse(tempcart as string) || []))
-    
+
+    dispatch(initializeCart(JSON.parse(tempcart as string) || []))
+
 
     // console.log("hello");
     axios.get("/user/status")
@@ -40,36 +40,36 @@ const App = () => {
       .catch(err => {
         if (err.response.status === 403) {
           localStorage.removeItem("jwt-token")
-          
+
         }
       })
 
     if (authStatus) {
       axios.post("/user/cartreplace", { cart: cart })
-      .then(response => {
-        dispatch(replaceCart(response.data.cart))
-        localStorage.removeItem("cart")
-      })
-      .catch(err => {
-        console.log(err);
-        message.error("Cannot update the cart correctly")
-      })
+        .then(response => {
+          dispatch(replaceCart(response.data.cart))
+          localStorage.removeItem("cart")
+        })
+        .catch(err => {
+          console.log(err);
+          message.error("Cannot update the cart correctly")
+        })
     }
     localStorage.removeItem("entryurl")
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, authStatus])
 
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/u/*" element={<MasterLayout />} />
-        <Route index element={<Store />} />
-        <Route path="/details/:id" element={<Details />} />
-        <Route path='/cart' element={<Cart />} />
-        <Route path="/*" element={<OpenRoute />} />
-      </Routes>
-    </BrowserRouter>
+
+    <Routes>
+      <Route path="/u/*" element={<MasterLayout />} />
+      <Route index element={<Store />} />
+      <Route path="/details/:id" element={<Details />} />
+      <Route path='/cart' element={<Cart />} />
+      <Route path="/*" element={<OpenRoute />} />
+    </Routes>
+
   );
 }
 

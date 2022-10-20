@@ -10,18 +10,21 @@ import 'core-js'
 import "@coreui/coreui/dist/css/coreui.css"
 import "antd/dist/antd.min.css"
 import axios from 'axios';
+import { BrowserRouter } from 'react-router-dom';
 
 
-axios.defaults.baseURL =  "https://online-store-iambhuvi.herokuapp.com/"
+axios.defaults.baseURL = "https://online-store-iambhuvi.herokuapp.com/"
 
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  <Provider store={Store}>
-    <App />
-  </Provider>
+  <BrowserRouter>
+    <Provider store={Store}>
+      <App />
+    </Provider>
+  </BrowserRouter>
 );
 
 // If you want to start measuring performance in your app, pass a function
