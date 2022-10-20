@@ -13,7 +13,6 @@ import axios from 'axios';
 
 
 axios.defaults.baseURL =  "https://online-store-iambhuvi.herokuapp.com/"
-axios.defaults.withCredentials = true
 
 
 const root = ReactDOM.createRoot(
