@@ -16,15 +16,15 @@ import { message } from "antd";
 
 const App = () => {
   axios.get("/user/status")
-  .then(res => {
-    dispatch(initialize({ auth: res.data.auth, user: res.data.user }))
-  })
-  .catch(err => {
-    if (err.response.status === 403) {
-      localStorage.removeItem("jwt-token")
+    .then(res => {
+      dispatch(initialize({ auth: res.data.auth, user: res.data.user }))
+    })
+    .catch(err => {
+      if (err.response.status === 403) {
+        localStorage.removeItem("jwt-token")
 
-    }
-  })
+      }
+    })
   const authStatus = useAppState(state => state.user.auth)
   // const userCart = useAppState(state => state.user.user?.cart)
   const cart = useAppState(state => state.cart.cart)
@@ -42,7 +42,7 @@ const App = () => {
 
 
     // console.log("hello");
-    
+
 
     if (authStatus) {
       axios.post("/user/cartreplace", { cart: cart })
@@ -54,6 +54,7 @@ const App = () => {
           console.log(err);
           message.error("Cannot update the cart correctly")
         })
+      localStorage.removeItem("cart")
     }
     localStorage.removeItem("entryurl")
     // eslint-disable-next-line react-hooks/exhaustive-deps

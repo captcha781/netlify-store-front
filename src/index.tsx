@@ -14,6 +14,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 
 axios.defaults.baseURL = "https://online-store-iambhuvi.herokuapp.com/"
+// axios.defaults.baseURL = "http://localhost:5000"
 
 
 const root = ReactDOM.createRoot(
