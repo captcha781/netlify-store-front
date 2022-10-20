@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom"
+import { Route, Routes } from "react-router-dom"
 import OpenRoute from "./Pages/OpenRoute";
 import { useAppState } from "./Redux/Hook";
 import Store from "./Pages/MainPages/Store";
