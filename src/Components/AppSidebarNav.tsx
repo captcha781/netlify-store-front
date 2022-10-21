@@ -3,8 +3,11 @@ import { NavLink, useLocation } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
 import { CBadge } from '@coreui/react'
+import { useAppDispatch } from '../Redux/Hook'
+import { sidebarToggle } from '../Redux/Slices/CommonSlice'
 
 export const AppSidebarNav = ({ items }:any) => {
+  const dispatch = useAppDispatch()
   const location = useLocation()
   const navLink = (name:any, icon:any, badge?:any) => {
     return (
@@ -23,6 +26,7 @@ export const AppSidebarNav = ({ items }:any) => {
   const navItem = (item:any, index:any) => {
     const { component, name, badge, icon, ...rest } = item
     const Component = component
+    
     return (
       <Component
         {...(rest.to &&
@@ -31,6 +35,7 @@ export const AppSidebarNav = ({ items }:any) => {
           })}
         key={index}
         {...rest}
+        onClick={() => dispatch(sidebarToggle())}
       >
         {navLink(name, icon, badge)}
       </Component>
@@ -56,6 +61,7 @@ export const AppSidebarNav = ({ items }:any) => {
 
   return (
     <React.Fragment>
+
       {items &&
         items.map((item:any, index:any) => (item.items ? navGroup(item, index) : navItem(item, index)))}
     </React.Fragment>

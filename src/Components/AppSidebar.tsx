@@ -30,7 +30,7 @@ const AppSidebar = () => {
       }}
     >
       <CSidebarBrandCustom className="d-none d-md-flex" to="/">
-        <Link to="/" className="sidebar-brand-full"><h1 className='mb-2 tw-font-fredoka tw-bg-gradient-to-r tw-from-orange-600 tw-to-pink-500  tw-text-transparent tw-object-fill tw-bg-clip-text'>KeyStone</h1></Link>
+        <Link to="/" className="sidebar-brand-full"><h1 className='mb-2 tw-font-fredoka tw-bg-gradient-to-r tw-from-orange-600 tw-to-pink-500  tw-text-transparent tw-object-fill tw-bg-clip-text'>KeyStore</h1></Link>
         {/* <CIcon className="sidebar-brand-narrow" icon={sygnet} height={35} /> */}
       </CSidebarBrandCustom>
       <CSidebarNav>
