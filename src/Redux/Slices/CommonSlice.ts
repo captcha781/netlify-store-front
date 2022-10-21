@@ -11,11 +11,20 @@ interface InitialStateCommon {
         rangestart: number,
         rangeend: number,
         category: string[],
+        page: number,
         search: string
     },
     orders: OrderItem[]
 
 }
+
+let search = window.location.search ? window.location.search.split("?")[1].split("=")[1] : 1
+let pageurl:number
+if (search) {
+    pageurl = Number(search)
+  } else {
+    pageurl = 1
+  }
 
 const initialState: InitialStateCommon = {
     sidebarShow: false,
@@ -25,6 +34,7 @@ const initialState: InitialStateCommon = {
         rangestart: 10,
         rangeend: 50000,
         category: [] as string[],
+        page:pageurl,
         search: ""
     },
     orders: []

@@ -8,7 +8,7 @@ import SimpleBar from 'simplebar-react'
 import 'simplebar/dist/simplebar.min.css'
 
 // sidebar nav config
-import navigation from './Navigator/Navigator'
+import {Navigator,NavigatorNonAuth} from './Navigator/Navigator'
 import { useAppDispatch, useAppState } from '../Redux/Hook'
 import { sidebarToggle } from '../Redux/Slices/CommonSlice'
 import { Link } from 'react-router-dom'
@@ -18,6 +18,7 @@ const AppSidebar = () => {
   const dispatch = useAppDispatch()
   const unfoldable = useAppState((state) => state.common.sidebarUnfoldable)
   const sidebarShow = useAppState((state) => state.common.sidebarShow)
+  const auth = useAppState(state => state.user.auth)
 
   return (
     <CSidebar
@@ -34,7 +35,7 @@ const AppSidebar = () => {
       </CSidebarBrandCustom>
       <CSidebarNav>
         <SimpleBar>
-          <AppSidebarNav items={navigation} />
+          <AppSidebarNav items={auth ? Navigator : NavigatorNonAuth} />
         </SimpleBar>
       </CSidebarNav>
       <CSidebarToggler

@@ -5,7 +5,7 @@ import Store from "./Pages/MainPages/Store";
 import Details from "./Pages/MainPages/Details";
 import MasterLayout from "./layout/MasterLayout";
 import Cart from "./Pages/MainPages/Cart";
-import React, { useEffect } from "react";
+import React, { useEffect, useLayoutEffect } from "react";
 import { useAppDispatch } from "./Redux/Hook";
 import axios from "axios";
 import { initialize, replaceCart } from "./Redux/Slices/userSlice";
@@ -15,20 +15,23 @@ import { message } from "antd";
 // To fix the cart
 
 const App = () => {
-  axios.get("/user/status")
+  const dispatch = useAppDispatch()
+  useLayoutEffect(() => {
+
+    axios.get("/user/status")
     .then(res => {
       dispatch(initialize({ auth: res.data.auth, user: res.data.user }))
     })
     .catch(err => {
       if (err.response.status === 403) {
         localStorage.removeItem("jwt-token")
-
+        
       }
     })
+  },[dispatch])
   const authStatus = useAppState(state => state.user.auth)
   // const userCart = useAppState(state => state.user.user?.cart)
   const cart = useAppState(state => state.cart.cart)
-  const dispatch = useAppDispatch()
   localStorage.setItem("entryurl", window.location.pathname)
   // const navigate = useNavigate()
   useEffect(() => {

@@ -5,7 +5,9 @@ import {
     cilHome,
     cilUser,
     cilGift,
-    cilAccountLogout
+    cilAccountLogout,
+    cilArrowRight,
+    cilUserPlus
 } from '@coreui/icons'
 // import { CNavGroup, CNavItem, CNavTitle } from '@coreui/react'
 import { CNavItem } from '@coreui/react'
@@ -46,4 +48,34 @@ const Navigator = [
     
 ]
 
-export default Navigator
+const NavigatorNonAuth = [
+    {
+        component: CNavItem,
+        name: 'Store',
+        to: '/',
+        icon: <CIcon icon={cilHome} customClassName="nav-icon" />,
+        
+    },
+    {
+        component: CNavItem,
+        name: 'Cart',
+        to: '/cart',
+        icon: <CIcon icon={cilCart} customClassName="nav-icon" />,
+    },
+    {
+        component: CNavItem,
+        name: 'Sign In',
+        to: '/signin',
+        icon: <CIcon icon={cilArrowRight} customClassName="nav-icon" />,
+    },
+    {
+        component: CNavItem,
+        name: 'Sign Up',
+        to: '/signup',
+        icon: <CIcon icon={cilUserPlus} customClassName="nav-icon" />,
+    },
+    
+    
+]
+
+export {Navigator, NavigatorNonAuth}

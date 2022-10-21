@@ -3,11 +3,13 @@ import { Product } from "../../types"
 
 
 interface InitialStateProduct {
-    products: Product[] | null
+    products: Product[] | null,
+    count: number
 }
 
 const initialState: InitialStateProduct = {
-    products: null
+    products: null,
+    count: 0
 }
 
 export const productSlice = createSlice({
@@ -16,10 +18,13 @@ export const productSlice = createSlice({
     reducers: {
         initialize: (state: InitialStateProduct, action: PayloadAction<Product[]>) => {
             state.products = action.payload
+        },
+        setCount: (state: InitialStateProduct, action: PayloadAction<number>) => {
+            state.count = action.payload
         }
     }
 })
 
 
-export const { initialize } = productSlice.actions
+export const { initialize, setCount } = productSlice.actions
 export default productSlice.reducer
