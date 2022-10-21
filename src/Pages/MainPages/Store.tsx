@@ -18,7 +18,7 @@ const Store = () => {
       <AppSidebar />
       <Wrapper>
         <AppHeader />
-        <div className="body flex-grow-1 px-3">
+        <div className="body flex-grow-1 md:px-3">
           <CContainer lg>
             <Suspense fallback={<CSpinner color="primary" />}>
               <StoreLayout />
