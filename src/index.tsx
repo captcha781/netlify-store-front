@@ -13,7 +13,7 @@ import axios from 'axios';
 import { BrowserRouter } from 'react-router-dom';
 
 
-axios.defaults.baseURL = "https://online-store-iambhuvi.herokuapp.com/"
+axios.defaults.baseURL = "https://keystore-back-vercel.vercel.app/"
 // axios.defaults.baseURL = "http://localhost:5000"
 axios.defaults.withCredentials = true
 
